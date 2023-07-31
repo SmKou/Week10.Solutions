@@ -1,0 +1,22 @@
+@{
+    Layout = "_Layout";
+}
+
+@using RestaurantList.Models
+@model RestaurantList.Models.Review
+
+<header>
+    <h1>Review: @Html.DisplayFor(model => model.Restaurant.Name)</h1>
+    <ul class="nav">
+        <li>@Html.ActionLink("Cuisines", "Index", "Home")</li>
+        <li>@Html.ActionLink("Restaurants", "Details", "Cuisines", new { id = Model.Restaurant.CuisineId })</li>
+        <li>@Html.ActionLink("Reviews", "Details", "Restaurants", new { id = Model.RestaurantId })</li>
+        <li>@Html.ActionLink("Edit", "Edit", new { id = Model.ReviewId })</li>
+        <li>@Html.ActionLink("Delete", "Delete", new { id = Model.ReviewId })</li>
+    </ul>
+</header>
+<main>
+    <h3>@Model.Summary</h3>
+    <p>@Model.Comment</p>
+    <p><strong>Rating:</strong> @Model.Rating</p>
+</main>

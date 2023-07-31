@@ -1,0 +1,27 @@
+@{
+    Layout = "_Layout";
+}
+
+@model ToDoList.Models.Item
+
+<header>
+    <h1>Edit Item</h1>
+    <ul class="nav">
+        <li>@Html.ActionLink("Back to list", "Index")</li>
+    </ul>
+</header>
+<main>
+    <h4>Edit this item: @Html.DisplayFor(model => model.Description)</h4>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.ItemId)
+
+        @Html.LabelFor(model => model.Description)
+        @Html.EditorFor(model => model.Description)
+
+        @Html.LabelFor(model => model.Category)
+        @Html.DropDownList("CategoryId");
+
+        <input type="submit" value="Save">
+    }
+</main>

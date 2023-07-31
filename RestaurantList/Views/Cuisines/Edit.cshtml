@@ -1,0 +1,27 @@
+@{
+    Layout = "_Layout";
+}
+
+@model RestaurantList.Models.Cuisine
+
+<header>
+    <h1>Edit @Model.Name</h1>
+    <ul class="nav">
+        <li>@Html.ActionLink("Cuisines", "Index", "Home")</li>
+        <li>@Html.ActionLink("Add Cuisine", "Create")</li>
+        <li>@Html.ActionLink("View", "Details", new { id = Model.CuisineId })</li>
+        <li>@Html.ActionLink("Delete", "Delete", new { id = Model.CuisineId })</li>
+        <li>@Html.ActionLink("Add Restaurant", "Create", "Restaurants", new { id = Model.CuisineId })</li>
+    </ul>
+</header>
+<main>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.CuisineId)
+
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name)
+
+        <input type="submit" value="Save">
+    }
+</main>

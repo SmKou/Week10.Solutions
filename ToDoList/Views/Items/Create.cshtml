@@ -1,0 +1,26 @@
+@{
+    Layout = "_Layout";
+}
+
+@model ToDoList.Models.Item
+
+<header>
+    <h1>Add New Item</h1>
+    <ul class="nav">
+        <li>@Html.ActionLink("Show All Items", "Index")</li>
+    </ul>
+</header>
+<main>
+    <p><strong>Note:</strong> You need to have at least one category before you can add an item.</p>
+    <p>Go to @Html.ActionLink("this page", "Create", "Categories") to create a new category.</p>
+    @using (Html.BeginForm())
+    {
+        @Html.LabelFor(model => model.Description)
+        @Html.TextBoxFor(model => model.Description)
+
+        @Html.LabelFor(model => model.Category)
+        @Html.DropDownList("CategoryId")
+
+        <input type="submit" value="Add new item">
+    }
+</main>

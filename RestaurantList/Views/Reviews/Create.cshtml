@@ -1,0 +1,31 @@
+@{
+    Layout = "_Layout";
+}
+
+@model RestaurantList.Models.Review
+
+<header>
+    <h1>Add Review</h1>
+    <ul class="nav">
+        <li>@Html.ActionLink("Cuisines", "Index", "Home")</li>
+        <li>@Html.ActionLink("Restaurants", "Details", "Cuisines", new { id = ViewBag.CuisineId })</li>
+        <li>@Html.ActionLink("Reviews", "Details", "Restaurants", new { id = ViewBag.RestaurantId })</li>
+    </ul>
+</header>
+<main>
+    @using (Html.BeginForm())
+    {
+        @Html.Hidden("RestaurantId", (int) ViewBag.RestaurantId)
+
+        @Html.LabelFor(model => model.Summary)
+        @Html.TextBoxFor(model => model.Summary)
+
+        @Html.LabelFor(model => model.Comment)
+        @Html.TextAreaFor(model => model.Comment)
+
+        @Html.LabelFor(model => model.Rating)
+        @Html.EditorFor(model => model.Rating)
+
+        <input type="submit" value="Add Review">
+    }
+</main>

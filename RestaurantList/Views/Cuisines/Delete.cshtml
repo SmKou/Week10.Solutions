@@ -1,0 +1,23 @@
+@{
+    Layout = "_Layout";
+}
+
+@model RestaurantList.Models.Cuisine
+
+<header>
+    <h1>Delete Cuisine</h1>
+    <ul class="nav">
+        <li>@Html.ActionLink("Cuisines", "Index", "Home")</li>
+        <li>@Html.ActionLink("Add Cuisine", "Create")</li>
+        <li>@Html.ActionLink("View", "Details", new { id = Model.CuisineId })</li>
+        <li>@Html.ActionLink("Edit", "Edit", new { id = Model.CuisineId })</li>
+        <li>@Html.ActionLink("Add Restaurant", "Create", "Restaurants")</li>
+    </ul>
+</header>
+<main>
+    <p>Are you sure you want to delete @Html.DisplayFor(model => model.Name) from cuisines?</p>
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Delete">
+    }
+</main>

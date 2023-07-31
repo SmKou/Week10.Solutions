@@ -1,0 +1,19 @@
+@{
+    Layout = "_Layout";
+}
+
+@model ToDoList.Models.Item
+
+<header>
+    <h1>Item Details</h1>
+    <ul class="nav">
+        <li>@Html.ActionLink("Back to List", "Index")</li>
+    </ul>
+</header>
+<main>
+    <h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
+    <h3>@Html.DisplayNameFor(model => model.Category): @Html.DisplayFor(model => model.Category.Name)</h3>
+    
+    <p>@Html.ActionLink("Edit item", "Edit", new { id = Model.ItemId })</p>
+    <p>@Html.ActionLink("Delete item", "Delete", new { id = Model.ItemId})</p>
+</main>

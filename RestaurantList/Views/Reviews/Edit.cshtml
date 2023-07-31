@@ -1,0 +1,33 @@
+@{
+    Layout = "_Layout";
+}
+
+@model RestaurantList.Models.Review
+
+<header>
+    <h1>Edit Review</h1>
+    <ul class="nav">
+        <li>@Html.ActionLink("Cuisines", "Index", "Home")</li>
+        <li>@Html.ActionLink("Restaurants", "Details", "Cuisines", new { id = Model.Restaurant.CuisineId })</li>
+        <li>@Html.ActionLink("View", "Details", "Restaurants", new { id = Model.RestaurantId })</li>
+        <li>@Html.ActionLink("Delete", "Delete", new { id = Model.ReviewId })</li>
+    </ul>
+</header>
+<main>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.ReviewId)
+        @Html.HiddenFor(model => model.RestaurantId)
+
+        @Html.LabelFor(model => model.Summary)
+        @Html.TextBoxFor(model => model.Summary)
+
+        @Html.LabelFor(model => model.Comment)
+        @Html.TextAreaFor(model => model.Comment)
+
+        @Html.LabelFor(model => model.Rating)
+        @Html.EditorFor(model => model.Rating)
+
+        <input type="submit" value="Save">
+    }
+</main>

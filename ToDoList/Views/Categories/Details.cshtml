@@ -1,0 +1,34 @@
+@{
+    Layout = "_Layout";
+}
+
+@using ToDoList.Models;
+@model ToDoList.Models.Category
+
+<header>
+    <h1>Category Details</h1>
+    <ul class="nav">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Edit Category", "Edit", new { id = Model.CategoryId })</li>
+        <li>@Html.ActionLink("Delete Category", "Delete", new { id = Model.CategoryId })</li>
+        <li>@Html.ActionLink("Back to List", "Index")</li>
+    </ul>
+</header>
+<main>
+    <h2>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h2>
+    @if (@Model.Items.Count == 0)
+    {
+        <h3>No items have been added to this category yet.</h3>
+    }
+    else
+    {
+        <h3>Items</h3>
+        <ul>
+            @foreach (Item item in Model.Items)
+            {
+                <li>@Html.ActionLink($"{item.Description}", "Details", "Items", new { id = item.ItemId })</li>
+            }
+        </ul>
+    }
+    <li>@Html.ActionLink("Add new item", "Create", "Items")</li>
+</main>
